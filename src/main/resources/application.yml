@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: format-transformer
+          uri: http://localhost:7000
+          predicates:
+          - Path=/api/v1/transformation, /api/v1/activity
+        - id: format-transformer-stats
+          uri: http://localhost:7002
+          predicates:
+          - Path=/api/v1/stats
+server:
+  port: 8080
