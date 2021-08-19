@@ -3,14 +3,23 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
         - id: format-transformer
-          uri: http://format-transformer
+          uri: format-transformer-svc.ft-backend.svc.cluster.local
           predicates:
-          - Path=/api/v1/transformation, /api/v1/activity
+            - Path=/api/v1/transformation, /api/v1/activity
         - id: format-transformer-stats
-          uri: http://format-transformer-stats
+          uri: format-transformer-stats-svc.ft-backend.svc.cluster.local
           predicates:
-          - Path=/api/v1/stats
+            - Path=/api/v1/stats
 server:
   port: 8080
+
