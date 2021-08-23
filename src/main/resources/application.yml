@@ -3,6 +3,10 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+        httpclient:
+          wiretap: true
+        httpserver:
+          wiretap: true
         default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
         globalcors:
@@ -21,4 +25,13 @@ spring:
            predicates:
            - Path=/api/v1/stats
 server:
-  port: 8080
+  port: 7003
+
+logging:
+  level:
+    reactor:
+      netty: INFO
+    org:
+      springframework:
+        cloud:
+          gateway: TRACE
