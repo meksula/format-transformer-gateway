@@ -14,12 +14,12 @@ spring:
       routes:
         - id: format-transformer
 #          uri: format-transformer-service.ft-backend.svc.cluster.local:8080
-          uri: ${FORMAT_TRANSFORMER_HOST}:${FORMAT_TRANSFORMER_PORT}
+          uri: http://${FORMAT_TRANSFORMER_HOST}:${FORMAT_TRANSFORMER_PORT}
           predicates:
             - Path=/api/v1/transformation, /api/v1/activity
         - id: format-transformer-stats
 #          uri: format-transformer-stats-service.ft-backend.svc.cluster.local:8080
-          uri: ${FORMAT_TRANSFORMER_STATS_HOST}:${FORMAT_TRANSFORMER_STATS_PORT}
+          uri: http://${FORMAT_TRANSFORMER_STATS_HOST}:${FORMAT_TRANSFORMER_STATS_PORT}
           predicates:
             - Path=/api/v1/stats
 server:

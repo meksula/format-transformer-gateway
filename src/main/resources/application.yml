@@ -17,7 +17,7 @@ spring:
               allowedHeaders: "*"
         routes:
          - id: format-transformer
-           uri: http://localhost:7000
+           uri: format-transformer-service.ft-backend.svc.cluster.local:7000
            predicates:
            - Path=/api/v1/transformation, /api/v1/activity
          - id: format-transformer-stats
